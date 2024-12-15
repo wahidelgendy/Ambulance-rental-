@@ -1,0 +1,49 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Admin Dashboard" />
+  <TabView>
+    <!-- Overview Tab -->
+    <TabViewItem title="Overview">
+      <ScrollView>
+        <StackLayout class="p-4">
+          <GridLayout columns="*,*" rows="auto,auto" class="text-center mb-4">
+            <StackLayout class="p-4 bg-gray-100 rounded">
+              <Label text="{{ totalHospitals }}" class="text-2xl font-bold" />
+              <Label text="Hospitals" />
+            </StackLayout>
+            <StackLayout col="1" class="p-4 bg-gray-100 rounded">
+              <Label text="{{ totalAmbulances }}" class="text-2xl font-bold" />
+              <Label text="Ambulances" />
+            </StackLayout>
+            <StackLayout row="1" class="p-4 bg-gray-100 rounded">
+              <Label text="{{ totalRides }}" class="text-2xl font-bold" />
+              <Label text="Total Rides" />
+            </StackLayout>
+            <StackLayout row="1" col="1" class="p-4 bg-gray-100 rounded">
+              <Label text="{{ totalRevenue }}" class="text-2xl font-bold" />
+              <Label text="Revenue" />
+            </StackLayout>
+          </GridLayout>
+        </StackLayout>
+      </ScrollView>
+    </TabViewItem>
+
+    <!-- Hospitals Tab -->
+    <TabViewItem title="Hospitals">
+      <GridLayout>
+        <ListView items="{{ hospitals }}">
+          <ListView.itemTemplate>
+            <GridLayout columns="*,auto" class="p-4">
+              <StackLayout>
+                <Label text="{{ name }}" class="font-bold" />
+                <Label text="{{ isVerified ? 'Verified' : 'Pending' }}" 
+                       class="{{ isVerified ? 'text-green-600' : 'text-yellow-600' }}" />
+              </StackLayout>
+              <Button text="{{ isVerified ? 'Manage' : 'Verify' }}" 
+                      tap="{{ onManageHospital }}" col="1" class="-primary" />
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </GridLayout>
+    </TabViewItem>
+  </TabView>
+</Page>

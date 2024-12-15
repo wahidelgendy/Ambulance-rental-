@@ -1,0 +1,58 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Hospital Dashboard" />
+  <TabView>
+    <!-- Active Rides Tab -->
+    <TabViewItem title="Active Rides">
+      <GridLayout>
+        <ListView items="{{ activeRides }}">
+          <ListView.itemTemplate>
+            <GridLayout columns="*,auto" class="p-4">
+              <StackLayout>
+                <Label text="{{ patientPhone }}" class="font-bold" />
+                <Label text="{{ status }}" class="text-gray-600" />
+                <Label text="{{ pickup.address }}" class="text-sm" />
+              </StackLayout>
+              <Button text="View" tap="{{ onViewRide }}" col="1" class="-primary" />
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </GridLayout>
+    </TabViewItem>
+
+    <!-- Ambulances Tab -->
+    <TabViewItem title="Ambulances">
+      <GridLayout>
+        <ListView items="{{ ambulances }}">
+          <ListView.itemTemplate>
+            <GridLayout columns="*,auto" class="p-4">
+              <StackLayout>
+                <Label text="{{ vehicleNumber }}" class="font-bold" />
+                <Label text="{{ status }}" class="text-gray-600" />
+              </StackLayout>
+              <Button text="Update" tap="{{ onUpdateAmbulance }}" col="1" class="-primary" />
+            </GridLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </GridLayout>
+    </TabViewItem>
+
+    <!-- Analytics Tab -->
+    <TabViewItem title="Analytics">
+      <ScrollView>
+        <StackLayout class="p-4">
+          <Label text="Today's Statistics" class="text-xl font-bold mb-4" />
+          <GridLayout columns="*,*" rows="auto,auto" class="text-center mb-4">
+            <StackLayout class="p-2 bg-gray-100 rounded">
+              <Label text="{{ todayRides }}" class="text-2xl font-bold" />
+              <Label text="Rides" />
+            </StackLayout>
+            <StackLayout col="1" class="p-2 bg-gray-100 rounded">
+              <Label text="{{ todayEarnings }}" class="text-2xl font-bold" />
+              <Label text="Earnings" />
+            </StackLayout>
+          </GridLayout>
+        </StackLayout>
+      </ScrollView>
+    </TabViewItem>
+  </TabView>
+</Page>

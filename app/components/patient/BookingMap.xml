@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Book Ambulance" />
+  <GridLayout>
+    <MapView id="bookingMap" latitude="{{ userLocation.latitude }}" 
+             longitude="{{ userLocation.longitude }}" zoom="15" />
+    
+    <StackLayout verticalAlignment="bottom" class="p-4 bg-white rounded-t-lg">
+      <Label text="Available Ambulances" class="text-xl font-bold mb-2" />
+      <ListView items="{{ nearbyAmbulances }}" class="h-32">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto,*,auto" class="p-2">
+            <Image src="{{ typeIcon }}" width="40" height="40" />
+            <StackLayout col="1" class="ml-2">
+              <Label text="{{ hospitalName }}" class="font-semibold" />
+              <Label text="{{ type }}" class="text-gray-600" />
+            </StackLayout>
+            <Button text="Select" tap="{{ onSelect }}" col="2" class="-primary" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </StackLayout>
+  </GridLayout>
+</Page>

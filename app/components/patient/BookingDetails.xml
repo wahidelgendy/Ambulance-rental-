@@ -1,0 +1,47 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Booking Details" />
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Staff Selection -->
+      <Label text="Select Required Staff" class="text-xl font-bold mb-2" />
+      <ListView items="{{ availableStaff }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto,*,auto" class="p-2">
+            <Label text="{{ role }}" class="font-semibold" />
+            <Label text="{{ specialization }}" col="1" class="text-gray-600" />
+            <Switch checked="{{ selected }}" col="2" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Equipment Selection -->
+      <Label text="Select Medical Equipment" class="text-xl font-bold mb-2" />
+      <ListView items="{{ availableEquipment }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="*,auto,auto" class="p-2">
+            <Label text="{{ name }}" class="font-semibold" />
+            <Label text="{{ additionalCost }}" col="1" class="text-gray-600" />
+            <Switch checked="{{ selected }}" col="2" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <!-- Price Breakdown -->
+      <StackLayout class="bg-gray-100 p-4 rounded-lg">
+        <Label text="Price Breakdown" class="text-lg font-bold mb-2" />
+        <GridLayout columns="*,auto" rows="auto,auto,auto,auto" class="mb-4">
+          <Label text="Base Fare" row="0" />
+          <Label text="{{ price.baseFare }}" row="0" col="1" />
+          <Label text="Equipment" row="1" />
+          <Label text="{{ price.equipmentCost }}" row="1" col="1" />
+          <Label text="Staff" row="2" />
+          <Label text="{{ price.staffCost }}" row="2" col="1" />
+          <Label text="Total" row="3" class="font-bold" />
+          <Label text="{{ price.total }}" row="3" col="1" class="font-bold" />
+        </GridLayout>
+      </StackLayout>
+
+      <Button text="Proceed to Payment" tap="{{ onProceedToPayment }}" class="-primary" />
+    </StackLayout>
+  </ScrollView>
+</Page>
